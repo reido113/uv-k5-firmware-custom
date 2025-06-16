@@ -9,11 +9,11 @@ ENABLE_AIRCOPY                ?= 0
 ENABLE_FMRADIO                ?= 1
 ENABLE_NOAA                   ?= 0
 ENABLE_VOICE                  ?= 0
-ENABLE_VOX                    ?= 1
+ENABLE_VOX                    ?= 0
 ENABLE_ALARM                  ?= 0
 ENABLE_TX1750                 ?= 0
 ENABLE_PWRON_PASSWORD         ?= 0
-ENABLE_DTMF_CALLING           ?= 1
+ENABLE_DTMF_CALLING           ?= 0
 ENABLE_FLASHLIGHT             ?= 1
 
 # ---- CUSTOM MODS ----
@@ -200,11 +200,13 @@ endif
 OBJCOPY = arm-none-eabi-objcopy
 SIZE = arm-none-eabi-size
 
-AUTHOR_STRING ?= EGZUMER
+AUTHOR_STRING ?= REIDO113
 # the user might not have/want git installed
 # can set own version string here (max 7 chars)
+# the below line "VERSION_STRING ?= v0.113" was originally the following line:
+# VERSION_STRING ?= $(shell git describe --tags --exact-match 2>$(NULL_OUTPUT))
 ifneq (, $(shell $(WHERE) git))
-	VERSION_STRING ?= $(shell git describe --tags --exact-match 2>$(NULL_OUTPUT))
+	VERSION_STRING ?= v0.113
 	ifeq (, $(VERSION_STRING))
     	VERSION_STRING := $(shell git rev-parse --short HEAD)
 	endif
